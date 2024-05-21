@@ -33,6 +33,7 @@ export const setupServer = () => {
     const { contactId } = req.params;
     try {
       const contact = await getContactById(contactId);
+      if (!contact) throw new Error();
       res.status(200).json({
         data: contact,
         message: `Successfully found contact with id ${contactId}!`,
