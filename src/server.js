@@ -3,12 +3,19 @@ import pino from 'pino-http';
 import cors from 'cors';
 import { env } from './utils/env.js';
 import { getAllContacts, getContactById } from './services/contacts.js';
+import { ENV_VARS } from './constants/index.js';
 
 export const setupServer = () => {
-  const PORT = env('PORT', '3000');
+  const PORT = env(ENV_VARS.PORT, '3000');
   const app = express();
 
-  app.use(pino());
+  app.use(
+    pino({
+      transport: {
+        target: 'pino-pretty',
+      },
+    }),
+  );
   app.use(cors());
 
   app.get('/contacts', async (_, res) => {
