@@ -1,3 +1,4 @@
+import createHttpError from 'http-errors';
 import { getAllContacts, getContactById } from '../services/contacts.js';
 
 export const getContactsController = async (_, res) => {
@@ -12,7 +13,8 @@ export const getContactByIdController = async (req, res, next) => {
   const contact = await getContactById(contactId);
 
   if (!contact) {
-    next(new Error('Not found'));
+    next(createHttpError(404, 'Contact not found'));
+    return;
   }
 
   res.status(200).json({
