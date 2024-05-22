@@ -35,6 +35,7 @@ export const setupServer = () => {
       const contact = await getContactById(contactId);
       if (!contact) throw new Error();
       res.status(200).json({
+        status: 200,
         data: contact,
         message: `Successfully found contact with id ${contactId}!`,
       });
@@ -49,7 +50,7 @@ export const setupServer = () => {
 
   app.use((error, _, res, __) => {
     const { message = 'Server internal error!', status = 500 } = error;
-    res.json({ status, message });
+    res.status(status).json({ status, message });
   });
 
   app.listen(PORT, (error) => {
