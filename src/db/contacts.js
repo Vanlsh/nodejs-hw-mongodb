@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { CONTACT_TYPE, PERSONAL } from '../constants';
+import { CONTACT_TYPE, PERSONAL } from '../constants/index.js';
 
 const contactsSchema = new Schema(
   {

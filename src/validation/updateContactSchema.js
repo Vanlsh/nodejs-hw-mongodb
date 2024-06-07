@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { CONTACT_TYPE } from '../constants';
+import { CONTACT_TYPE } from '../constants/index.js';
 
 export const updateContactSchema = Joi.object({
   name: Joi.string().min(3).max(20).messages({
@@ -12,7 +12,7 @@ export const updateContactSchema = Joi.object({
   }),
   isFavorite: Joi.boolean(),
   contactType: Joi.string()
-    .valid(CONTACT_TYPE)
+    .valid(...CONTACT_TYPE)
     .messages({
       'any.only': `Contact type must be one of ${CONTACT_TYPE.join(', ')}`,
     }),
