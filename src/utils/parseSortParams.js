@@ -1,4 +1,4 @@
-import { SORT_ORDER } from '../constants/index.js';
+import { SORT_ORDER, DEFAULT_SORT_BY } from '../constants/index.js';
 
 const parseSortOrder = (sortOrder) => {
   const isKnownOrder = [SORT_ORDER.ASC, SORT_ORDER.DESC].includes(sortOrder);
@@ -13,7 +13,7 @@ const parseSortBy = (sortBy) => {
     return sortBy;
   }
 
-  return '_id';
+  return DEFAULT_SORT_BY;
 };
 
 export const parseSortParams = (query) => {

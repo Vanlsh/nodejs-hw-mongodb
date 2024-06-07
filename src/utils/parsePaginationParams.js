@@ -1,4 +1,8 @@
-import { PER_PAGE_LIMIT } from '../constants/index.js';
+import {
+  DEFAULT_PAGE,
+  DEFAULT_PER_PAGE,
+  PER_PAGE_LIMIT,
+} from '../constants/index.js';
 
 const parseNumber = (unknown, defaultNumber) => {
   if (typeof unknown !== 'string') return defaultNumber;
@@ -11,8 +15,8 @@ const parseNumber = (unknown, defaultNumber) => {
 };
 
 export const parsePaginationParams = (query) => {
-  const page = parseNumber(query.page, 1);
-  const perPage = parseNumber(query.perPage, 10);
+  const page = parseNumber(query.page, DEFAULT_PAGE);
+  const perPage = parseNumber(query.perPage, DEFAULT_PER_PAGE);
 
   return {
     page,

@@ -13,6 +13,9 @@ export const PERSONAL = 'personal';
 export const CONTACT_TYPE = [WORK, HOME, PERSONAL];
 
 export const PER_PAGE_LIMIT = 100;
+export const DEFAULT_PAGE = 1;
+export const DEFAULT_PER_PAGE = 10;
+export const DEFAULT_SORT_BY = '_id';
 
 export const SORT_ORDER = {
   ASC: 'asc',

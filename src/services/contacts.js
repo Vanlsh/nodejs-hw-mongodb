@@ -1,11 +1,17 @@
+import {
+  SORT_ORDER,
+  DEFAULT_PER_PAGE,
+  DEFAULT_PAGE,
+  DEFAULT_SORT_BY,
+} from '../constants/index.js';
 import { ContactsCollection } from '../db/contacts.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 
 export const getAllContacts = async (
-  page,
-  perPage,
-  sortOrder,
-  sortBy,
+  page = DEFAULT_PAGE,
+  perPage = DEFAULT_PER_PAGE,
+  sortOrder = SORT_ORDER.ASC,
+  sortBy = DEFAULT_SORT_BY,
   filter = {},
 ) => {
   const contactFilter = ContactsCollection.find();
