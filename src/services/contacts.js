@@ -1,11 +1,25 @@
-import { SORT_ORDER } from '../constants/index.js';
 import { ContactsCollection } from '../db/contacts.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 
-export const getAllContacts = async (page, perPage, sortOrder, sortBy) => {
-  const contactsQuery = ContactsCollection.find();
+export const getAllContacts = async (
+  page,
+  perPage,
+  sortOrder,
+  sortBy,
+  filter = {},
+) => {
+  const contactFilter = ContactsCollection.find();
+
+  if (typeof filter.isFavorite === 'boolean') {
+    contactFilter.where('isFavorite').equals(filter.isFavorite);
+  }
+
+  if (filter.contactType) {
+    contactFilter.where('contactType').equals(filter.contactType);
+  }
+
   const contactsCount = await ContactsCollection.find()
-    .merge(contactsQuery)
+    .merge(contactFilter)
     .countDocuments();
 
   const paginationData = calculatePaginationData(contactsCount, perPage, page);
@@ -13,7 +27,7 @@ export const getAllContacts = async (page, perPage, sortOrder, sortBy) => {
   const limit = perPage;
   const skip = perPage * (paginationData.page - 1);
 
-  const contacts = await contactsQuery
+  const contacts = await contactFilter
     .skip(skip)
     .limit(limit)
     .sort({
