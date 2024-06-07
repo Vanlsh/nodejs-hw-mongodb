@@ -11,3 +11,10 @@ export const HOME = 'home';
 export const PERSONAL = 'personal';
 
 export const CONTACT_TYPE = [WORK, HOME, PERSONAL];
+
+export const PER_PAGE_LIMIT = 100;
+
+export const SORT_ORDER = {
+  ASC: 'asc',
+  DESC: 'desc',
+};
