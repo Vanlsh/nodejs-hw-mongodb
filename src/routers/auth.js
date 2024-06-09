@@ -9,6 +9,7 @@ import {
 import { validateBody } from '../middlewares/validateBody.js';
 import { registerUserSchema } from '../validation/registerUserSchema.js';
 import { loginUserSchema } from '../validation/loginUserSchema.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = Router();
 
@@ -24,8 +25,8 @@ router.post(
   ctrlWrapper(loginUserController),
 );
 
-router.post('/refresh', ctrlWrapper(refreshUserController));
+router.post('/refresh', authenticate, ctrlWrapper(refreshUserController));
 
-router.post('/logout', ctrlWrapper(logoutUserController));
+router.post('/logout', authenticate, ctrlWrapper(logoutUserController));
 
 export default router;

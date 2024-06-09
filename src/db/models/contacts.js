@@ -24,6 +24,10 @@ const contactsSchema = new Schema(
       enum: CONTACT_TYPE,
       default: PERSONAL,
     },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'users',
+    },
   },
   {
     timestamps: true,
