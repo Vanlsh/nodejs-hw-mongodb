@@ -4,7 +4,7 @@ import {
   DEFAULT_PAGE,
   DEFAULT_SORT_BY,
 } from '../constants/index.js';
-import { ContactsCollection } from '../db/contacts.js';
+import { ContactsCollection } from '../db/models/contacts.js';
 import { calculatePaginationData } from '../utils/calculatePaginationData.js';
 
 export const getAllContacts = async (
