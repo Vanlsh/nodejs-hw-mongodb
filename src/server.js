@@ -26,6 +26,8 @@ export const setupServer = () => {
 
   app.use(cookieParser());
 
+  app.use(express.urlencoded({ extended: true }));
+
   app.use(router);
 
   app.use(notFoundHandler);

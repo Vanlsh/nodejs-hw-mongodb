@@ -40,6 +40,7 @@ export const JWT_SECRET = 'JWT_SECRET';
 export const APP_DOMAIN = 'APP_DOMAIN';
 
 export const TEMPLATES_DIR = path.join(process.cwd(), 'src', 'templates');
+export const TEMP_UPLOAD_DIR = path.join(process.cwd(), 'temp');
 
 export const CLOUDINARY = {
   CLOUD_NAME: 'CLOUD_NAME',
