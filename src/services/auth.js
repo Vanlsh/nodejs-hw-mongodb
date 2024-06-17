@@ -96,7 +96,7 @@ export const requestResetToken = async (email) => {
     },
     env(JWT_SECRET),
     {
-      expiresIn: '1m',
+      expiresIn: '15m',
     },
   );
 
@@ -114,7 +114,6 @@ export const requestResetToken = async (email) => {
     name: user.name,
     link: `${env(APP_DOMAIN)}/reset-password?token=${resetToken}`,
   });
-  console.log(resetToken);
 
   await sendEmail({
     from: env(SMTP.SMTP_FROM),
