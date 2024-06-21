@@ -31,7 +31,7 @@ router.get(
 router.post(
   '/',
   upload.single('photo'),
-  convertBoolean,
+
   validateBody(createContactSchema),
   ctrlWrapper(createContactController),
   deleteFileHandler,
@@ -40,7 +40,6 @@ router.post(
 router.patch(
   '/:contactId',
   upload.single('photo'),
-  convertBoolean,
   validateBody(updateContactSchema),
   ctrlWrapper(patchContactController),
   deleteFileHandler,
