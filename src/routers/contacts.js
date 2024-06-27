@@ -14,7 +14,6 @@ import { createContactSchema } from '../validation/createContactSchema.js';
 import { authenticate } from '../middlewares/authenticate.js';
 import { upload } from '../middlewares/multer.js';
 import { deleteFileHandler } from '../middlewares/deleteFileHandler.js';
-import { convertBoolean } from '../middlewares/convertBoolean.js';
 
 const router = Router();
 

@@ -20,7 +20,7 @@ import { sendEmail } from '../utils/sendMail.js';
 export const registerUser = async (payload) => {
   const user = await UsersCollection.findOne({ email: payload.email });
 
-  if (user) throw createHttpError(409, 'Email in use');
+  if (user) throw createHttpError(409, 'Email in used');
 
   const encryptedPassword = await bcrypt.hash(payload.password, BCRYPT_LENGTH);
 
@@ -130,7 +130,7 @@ export const resetPassword = async (payload) => {
     entries = jwt.verify(payload.token, env(JWT_SECRET));
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {
-      throw createHttpError(401, 'Token is expired or invalid.');
+      throw createHttpError(401, 'Token is expired or invalid');
     }
     if (error instanceof Error) throw createHttpError(401, error.message);
     throw error;
